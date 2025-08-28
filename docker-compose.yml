@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  github-projects-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - GITHUB_TOKEN
+      - GITHUB_OWNER
+      - GITHUB_OWNER_TYPE
+      - ALLOWED_REPOS
+      - SUPERGATEWAY_PORT

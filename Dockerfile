@@ -18,10 +18,11 @@ WORKDIR /app
 COPY package.json bun.lock ./
 
 # Install dependencies using Bun and ignoring scripts
-RUN bun install --ignore-scripts
+RUN bun install --ignore-scripts && bun install -g supergateway
 
 # Copy the rest of the application code
 COPY . .
 
-# Command to start the MCP server
-CMD ["bun", "run", "src/cli.ts"]
+RUN bun run build
+
+ENTRYPOINT [ "./entrypoint.sh" ]
