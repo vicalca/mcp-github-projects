@@ -1,5 +1,5 @@
 #!/bin/sh
-REQUIRED_VARS="GITHUB_TOKEN GITHUB_OWNER GITHUB_OWNER_TYPE ALLOWED_REPOS SUPERGATEWAY_PORT"
+REQUIRED_VARS="GITHUB_TOKEN GITHUB_OWNER GITHUB_OWNER_TYPE ALLOWED_REPOS SUPERGATEWAY_PORT GITHUB_API_URL"
 
 MISSING_VARS=false
 
@@ -23,4 +23,4 @@ fi
 
 echo "All required environment variables are set. Starting the application..."
 
-supergateway --stdio "bun ./build/index.js" --port $SUPERGATEWAY_PORT
+bun run start --healthEndpoint /health --port $SUPERGATEWAY_PORT

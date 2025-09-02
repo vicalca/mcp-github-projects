@@ -762,6 +762,7 @@ server.tool<UpdateIssueParams>(
 async function main() {
 	const transport = new StdioServerTransport();
 	await server.connect(transport);
+	console.log("Server running on stdio transport")
 }
 main().catch((error) => {
 	console.error("Server error:", error);

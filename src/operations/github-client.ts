@@ -16,14 +16,20 @@ export class GitHubClient {
 	 */
 	constructor() {
 		const token = process.env.GITHUB_TOKEN;
+		const baseUrl = process.env.GITHUB_API_URL;
 
 		if (!token) {
 			throw new Error("GITHUB_TOKEN environment variable is required");
 		}
 
+		if (!baseUrl) {
+			console.warn("GITHUB_API_URL environment variable is required for GitHub Enterprise");
+		}
+
 		// Initialize Octokit instance
 		this.octokit = new CustomOctokit({
 			auth: token,
+			baseUrl: baseUrl,
 		});
 	}
 
